@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% block content %}
+{% if page == 'login' %}
+<div class="col-md-10 mx-auto col-lg-5">
+    <form class="p-4 p-md-5 border rounded-3 bg-dark" method="post" action="">
+        {% csrf_token %}
+      <div class="form-floating mb-3">
+        <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Enter Useername">
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>      
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+      <hr class="my-4">
+      <small class="text-muted">Not Signed up?.</small>
+      <a href="{% url 'register' %}">Sign up</a>
+    </form>
+  </div>
+{% else %}
+<div class="col-md-10 mx-auto col-lg-5">
+    <form class="p-4 p-md-5 border rounded-3 bg-dark" method="post" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        
+        <button class="w-100 btn btn-lg btn-primary" type="submit">register</button>
+    </form>
+    <p>Already signed up?</p>
+    <a href="{% url 'login' %}">Login</a>
+</div>
+{% endif %}
+{% endblock %}

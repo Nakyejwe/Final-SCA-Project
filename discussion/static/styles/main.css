@@ -1,0 +1,13 @@
+@media (min-width: 992px) {
+    .rounded-lg-3 { border-radius: .3rem!important; }
+  }
+body{
+    background-color:rgba(86, 88, 88, 0.959) !important;
+    color: #fff;
+}
+.bg-dark{
+    opacity: 0.5 !important;
+}
+a{
+    text-decoration: none!important;
+}

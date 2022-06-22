@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'styles/main.css' %}">
+    
+    <title>Online discussion Devis</title>
+    
+</head>
+<body>
+    <main class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+  
+    {% include 'navbar.html' %}
+
+    
+       {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="col-md-12 text-start">
+        
+        {% if request.user.is_authenticated %}
+        <h2>hello {{request.user}}</h2>
+            <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-primary me-2">LOGOUT</button></a>            
+            {% else %}
+            <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-primary me-2">LOGIN</button></a>          
+        {% endif %}
+    </div>
+    {% block content %}
+
+    
+    {% endblock %}
+    </main>
+</body>
+</html>
+<script source="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/dist/js/bootstrap.bundle.min.js' %}"></script>

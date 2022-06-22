@@ -1,0 +1,32 @@
+<style>
+  .feed-comp {
+  height:50%;
+  overflow-y: scroll;
+}
+</style>
+
+<div class="feed-comp m-2">
+  {% for room in rooms%}
+    <div class="feed col-md-10">
+      <div class=" align-items-center border rounded overflow-hidden shadow-sm h-md-250 bg-dark">
+        <div class="col p-4 d-flex flex-column rounded">
+         
+          {% if request.user == room.host %}
+          <div class="col p-2 d-flex">
+            
+              <a href="{% url 'update-room' room.id %}" class="btn btn-secondary">Edit</a>
+            
+            <a href="{% url 'delete-room' room.id %}" class="btn btn-secondary">Delete</a>               
+          </div>
+          {% endif %}
+          <h3 class="mb-0"><a href="{% url 'room' room.id %}">{{room.name}}</a></h3>
+          
+          <div class="mb-1 text-muted">last updated {{room.updated|timesince}} ago</div>
+          <p class="mb-auto"><a href="{% url 'profile' room.host.id%}">@{{room.host.username}}</a></p>
+          <small>{{room.topic.name}}</small>
+        </div>
+        <hr>
+      </div>
+    </div>
+    {% endfor %}
+  </div>

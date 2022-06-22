@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1>Home Page Templates</h1>
+
+<div class="home-container d-flex">
+    <div class="col-md-3">
+        {% include 'prog/topic_component.html' %}
+    </div>
+
+    <div class="col-md-6">
+        <h5>{{room_count}} rooms available</h5>
+        <a href="{% url 'create-room' %}">Create Room</a>
+       {%include 'prog/feed_component.html'%}
+    </div>
+    <div class="col-md-3">
+        {% include 'prog/activity_component.html' %}
+    </div>
+</div>
+    
+{% endblock %}
